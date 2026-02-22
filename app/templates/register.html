@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Регистрация | SosyneGram</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+
+<body>
+    <div class="auth-page-container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>
+                        <i class="fas fa-user-plus"></i>
+                        Создать аккаунт
+                    </h1>
+                    <p class="auth-subtitle">Присоединяйтесь к HenTok</p>
+                </div>
+
+                <div class="auth-body">
+                    <form action="{{ url_for('auth.register') }}" method="POST" id="registerForm" class="auth-form">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                        <div class="form-group">
+                            <label for="username">
+                                <i class="fas fa-user"></i>Имя пользователя
+                            </label>
+                            <input type="text"
+                                   class="{% if username_error %}is-invalid{% endif %}"
+                                   id="username"
+                                   name="username"
+                                   value="{{ username_value if username_value else '' }}"
+                                   placeholder="Придумайте имя пользователя"
+                                   required>
+                            <span class="invalid-feedback" id="usernameError">
+                                {% if username_error %}
+                                    {{ username_error }}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">
+                                <i class="fas fa-lock"></i>Пароль
+                            </label>
+                            <input type="password"
+                                   class="{% if password_error %}is-invalid{% endif %}"
+                                   id="password"
+                                   name="password"
+                                   placeholder="Создайте пароль"
+                                   required>
+                            <span class="invalid-feedback" id="passwordError">
+                                {% if password_error %}
+                                    {{ password_error }}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm">
+                                <i class="fas fa-lock"></i>Подтверждение
+                            </label>
+                            <input type="password"
+                                   class="{% if confirm_password_error %}is-invalid{% endif %}"
+                                   id="confirm"
+                                   name="confirm"
+                                   placeholder="Повторите пароль"
+                                   required>
+                            <span class="invalid-feedback" id="confirmError">
+                                {% if confirm_password_error %}
+                                    {{ confirm_password_error }}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        {% if general_error %}
+                            <div class="alert alert-danger">
+                                {{ general_error }}
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block" id="registerButton">
+                                <i class="fas fa-user-plus me-2"></i>Зарегистрироваться
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="mb-0">Уже есть аккаунт?
+                                <a href="{{ url_for('auth.login') }}" class="auth-link">Войти</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+</body>
+</html>

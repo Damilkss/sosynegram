@@ -1,5 +1,3 @@
-import os
-
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -8,9 +6,9 @@ from app.models import data_base
 class User(data_base.Model, UserMixin):
     id = data_base.Column(data_base.Integer, primary_key=True)
 
-    username = data_base.Column(data_base.String(100), unique=True, nullable=False)
-    password = data_base.Column(data_base.String(100), nullable=True)
-    avatar = data_base.Column(data_base.String(200), nullable=True)
+    username = data_base.Column(data_base.String(20), nullable=True)
+    password = data_base.Column(data_base.String(16), nullable=True)
+    avatar = data_base.Column(data_base.String(40), nullable=True)
 
     posts = data_base.relationship('Post', backref='author', lazy=True)
     comments = data_base.relationship('Comment', backref='author', lazy=True)
@@ -43,6 +41,9 @@ class User(data_base.Model, UserMixin):
         backref=data_base.backref('followers', lazy='dynamic'),
         lazy='dynamic'
     )
+
+    def set_username(self, set_username: str):
+        self.username = set_username
 
     def set_password(self, password: str):
         self.password = generate_password_hash(password)

@@ -1,0 +1,209 @@
+.profile-container {
+    max-width: 1000px;
+    margin: var(--header-height) auto 2rem;
+    padding: 0 1rem;
+}
+
+.profile-header {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar i {
+    font-size: 5rem;
+    color: #6a11cb;
+    margin-right: 2rem;
+}
+
+.profile-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-stats span {
+    margin-right: 2rem;
+    color: #6c757d;
+}
+
+.profile-stats strong {
+    color: #212529;
+    font-size: 1.2rem;
+}
+
+.profile-posts h3 {
+    margin-bottom: 1.5rem;
+    color: #343a40;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-item {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    aspect-ratio: 1 / 1;
+}
+
+.grid-item img,
+.grid-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.grid-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    padding: 1rem 0.5rem 0.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #6a11cb;
+    color: #6a11cb;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: #6a11cb;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.selection-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    font-weight: 500;
+}
+
+.selection-bar button {
+    margin: 0;
+}
+
+.post-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.selection-mode .post-checkbox {
+    opacity: 1;
+}
+
+.post-checkbox input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: #6a11cb;
+}
+
+.grid-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.selection-mode .grid-item:hover .grid-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(106, 17, 203, 0.1);
+    pointer-events: none;
+}
+.multi-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    z-index: 5;
+}
+
+.multi-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    z-index: 5;
+}
