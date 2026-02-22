@@ -26,13 +26,6 @@ class User(data_base.Model, UserMixin):
         lazy=True
     )
 
-    mentions = data_base.relationship(
-        'Mention',
-        foreign_keys='Mention.user_id',
-        back_populates='user',
-        lazy=True
-    )
-
     following = data_base.relationship(
         'User',
         secondary='follows',

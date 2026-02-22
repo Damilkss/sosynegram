@@ -4,3 +4,4 @@ storage/
 *.db
 README.md
 __pycache__/
+test.py
