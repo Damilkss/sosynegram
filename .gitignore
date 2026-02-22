@@ -2,3 +2,5 @@
 .idea/
 storage/
 *.db
+README.md
+__pycache__/
